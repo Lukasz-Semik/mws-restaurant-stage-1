@@ -4,6 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "python -m SimpleHTTPServer 8000"
+    "dev": "lite-server",
+    "scss:compile": "sass --watch styles/index.scss:css/main.css"
+  },
+  "dependencies": {
+    "lite-server": "^2.3.0"
   }
 }
