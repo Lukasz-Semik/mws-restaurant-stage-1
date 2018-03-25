@@ -32,3 +32,9 @@
     @content;
   }
 }
+
+@mixin atMedium {
+  @media (min-width: 570px){
+    @content;
+  }
+}

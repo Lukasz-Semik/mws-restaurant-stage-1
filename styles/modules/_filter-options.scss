@@ -1,24 +1,65 @@
 .filter-options {
-  width: 100%;
-  @include sizing(auto 3.5rem);
+  @include sizing(100% 6.5rem);
+  @include absolute(top 0 left 0);
+  display: none;
+  padding-bottom: 5px;
   align-items: center;
+  background-color: $c-dark-main;
+
+  &--expanded {
+    display: block;
+  }
+
+  @include atMedium {
+    @include sizing(auto auto);
+    position: static;
+    display: block;
+  }
+
+  &__close {
+    @include absolute(top 0 left 16.5rem);
+    display: block;
+    background-color: transparent;
+    border: none;
+
+    @include atMedium {
+      display: none;
+    }
+  }
 
   &__title {
+    display: none;
     @include absolute(top 1rem left 1rem);
     color: $white;
     font-size: 1rem;
     font-weight: normal;
     line-height: 1;
+
+    @include atMedium {
+      display: block;
+    }
   }
 
   &__select {
-    @include sizing(20rem 3.5rem);
+    @include sizing(15rem 2.5rem);
+    font-size: 10pt;
+    display: block;
+    margin: 5px 10px;
+
+    @include atMedium {
+      display: inline-block;
+    }
+
+    @include atLarge {
+      @include sizing(20rem 3.5rem);
+      font-size: 11pt;
+      margin: 0 10px;
+    }
+
     background-color: $white;
     border: 1px solid $white;
     font-family: Arial,sans-serif;
-    font-size: 11pt;
     letter-spacing: 0;
-    margin: 0 10px;
     padding: 0 10px;
   }
 }

@@ -2,9 +2,13 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <!-- <link rel="stylesheet" href="css/styles.css"> -->
   <link rel="stylesheet" href="css/main.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
   <title>Restaurant Reviews</title>
 </head>
 
@@ -13,7 +17,12 @@
     <nav class="header__nav">
       <h1><a class="header__nav-item" href="/">Restaurant Reviews</a></h1>
     </nav>
-    <div class="filter-options">
+    <div class="view-switcher view-switcher--is-filter">
+      <button class="view-switcher__btn" id="view-switcher-filter">
+        <i class="fas fa-filter fa-lg icon"></i>
+      </button>
+    </div>
+    <div class="filter-options" id="filter-options">
       <h2 class="filter-options__title">Filter Results</h2>
       <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" class="filter-options__select">
         <option value="all">All Neighborhoods</option>
@@ -21,9 +30,14 @@
       <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" class="filter-options__select">
         <option value="all">All Cuisines</option>
       </select>
+      <button class="filter-options__close" id="filter-close">
+        <i class="fas fa-times fa-2x icon"></i>
+      </button>
     </div>
     <div class="view-switcher">
-      <button class="view-switcher__btn" id="view-switcher">Map</button>
+      <button class="view-switcher__btn" id="view-switcher">
+        <i class="fas fa-map fa-lg icon"></i>
+      </button>
     </div>
   </header>
 

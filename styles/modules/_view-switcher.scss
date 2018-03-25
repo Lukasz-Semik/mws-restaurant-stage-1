@@ -5,6 +5,11 @@
     display: none;
   }
 
+  &--is-filter {
+    right: auto;
+    left: 2%;
+  }
+
   &__btn {
     border: 0;
     background-color: transparent;

@@ -1,0 +1,9 @@
+.icon {
+  color: $white;
+  margin: 5px 5px 5px 5px;
+
+  &:hover,
+  &:focus {
+    color: $orange;
+  }
+}
