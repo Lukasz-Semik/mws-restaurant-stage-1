@@ -1,0 +1,24 @@
+.filter-options {
+  width: 100%;
+  @include sizing(auto 3.5rem);
+  align-items: center;
+
+  &__title {
+    @include absolute(top 1rem left 1rem);
+    color: $white;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1;
+  }
+
+  &__select {
+    @include sizing(20rem 3.5rem);
+    background-color: $white;
+    border: 1px solid $white;
+    font-family: Arial,sans-serif;
+    font-size: 11pt;
+    letter-spacing: 0;
+    margin: 0 10px;
+    padding: 0 10px;
+  }
+}

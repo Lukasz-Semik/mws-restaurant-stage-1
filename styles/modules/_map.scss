@@ -1,0 +1,4 @@
+.map {
+  @include sizing(100% $view-height);
+  background-color: $c-lighten-grey;
+}

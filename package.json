@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "lite-server",
-    "scss:compile": "sass --watch styles/index.scss:css/main.css"
+    "scss:watch": "sass --watch styles/index.scss:css/main.css"
   },
   "dependencies": {
     "lite-server": "^2.3.0"

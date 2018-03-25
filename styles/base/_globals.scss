@@ -1,3 +1,18 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 body {
-  background-color: black;
+  background-color: $c-light-grey;
+	margin: 0;
+}
+
+a {
+  text-decoration: none;
 }

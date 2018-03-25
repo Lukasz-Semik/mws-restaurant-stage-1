@@ -1,0 +1,17 @@
+.header {
+  height: 6.5rem;
+  background-color: $c-dark-main;
+
+  &__nav {
+    height: 3rem;
+    text-align:center;
+  }
+
+  &__nav-item {
+    color: $white;
+    font-size: 14pt;
+    font-weight: 200;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+  }
+}
