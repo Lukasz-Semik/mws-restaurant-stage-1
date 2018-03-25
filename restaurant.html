@@ -5,53 +5,65 @@
   <!-- Normalize.css for better cross-browser consistency -->
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <!-- Main CSS file -->
-  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <!-- <link rel="stylesheet" href="css/styles.css" type="text/css"> -->
+  <link rel="stylesheet" href="css/main.css" type="text/css">
   <title>Restaurant Info</title>
 </head>
 
 <body class="inside">
-  <!-- Beginning header -->
-  <header>
-    <!-- Beginning nav -->
+  <!-- <header>
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
-    </nav>
+    </nav> -->
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
-      <li><a href="/">Home</a></li>
-    </ul>
+ 
     <!-- End breadcrumb -->
     <!-- End nav -->
-  </header>
+  <!-- </header> -->
   <!-- End header -->
+  <header class="header">
+    <nav class="header__nav">
+      <h1><a class="header__nav-item" href="/">Restaurant Reviews</a></h1>
+    </nav>
+    <div class="view-switcher view-switcher--is-filter">
+      <button class="view-switcher__btn" id="view-switcher-filter">
+        <i class="fas fa-filter fa-lg icon"></i>
+      </button>
+    </div>
+  </header>
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" class="content">
     <!-- Beginning map -->
-    <section id="map-container">
-      <div id="map"></div>
+    <section id="map-container" class="content__left">
+      <div id="map" class="map"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
-    <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
-      <img id="restaurant-img">
-      <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
-    </section>
-    <!-- end restaurant -->
-    <!-- Beginning reviews -->
-    <section id="reviews-container">
-      <ul id="reviews-list"></ul>
-    </section>
+    <div class="content__right restaurants">
+      <section id="restaurant-container" class="restaurant-detail">
+        <ul id="breadcrumb" class="breadcrumb">
+          <li><a class="breadcrumb__link" href="/">Home</a></li>
+        </ul>
+        <h1 id="restaurant-name" class="restaurant-detail__title"></h1>
+        <img id="restaurant-img" class="restaurant-detail__img">
+        <p id="restaurant-cuisine" class="restaurant-detail__cuisine"></p>
+        <p id="restaurant-address" class="restaurant-detail__address"></p>
+        <table id="restaurant-hours"></table>
+      </section>
+      <!-- end restaurant -->
+      <!-- Beginning reviews -->
+      <section id="reviews-container" class="restaurant-review">
+        <ul id="reviews-list"></ul>
+      </section>
+    </div>
     <!-- End reviews -->
   </main>
   <!-- End main -->
 
   <!-- Beginning footer -->
-  <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  <footer id="footer" class="footer">
+    Copyright (c) 2017 <a href="/" class="footer__link"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->
 
