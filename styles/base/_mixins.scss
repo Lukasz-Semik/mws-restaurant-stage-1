@@ -26,3 +26,9 @@
   #{$prefix}width: $width;
   #{$prefix}height: $height;
 }
+
+@mixin atLarge {
+  @media (min-width: 800px){
+    @content;
+  }
+}

@@ -14,21 +14,24 @@
       <h1><a class="header__nav-item" href="/">Restaurant Reviews</a></h1>
     </nav>
     <div class="filter-options">
-        <h2 class="filter-options__title">Filter Results</h2>
-        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" class="filter-options__select">
-          <option value="all">All Neighborhoods</option>
-        </select>
-        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" class="filter-options__select">
-          <option value="all">All Cuisines</option>
-        </select>
-      </div>
+      <h2 class="filter-options__title">Filter Results</h2>
+      <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" class="filter-options__select">
+        <option value="all">All Neighborhoods</option>
+      </select>
+      <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" class="filter-options__select">
+        <option value="all">All Cuisines</option>
+      </select>
+    </div>
+    <div class="view-switcher">
+      <button class="view-switcher__btn" id="view-switcher">Map</button>
+    </div>
   </header>
 
-  <main id="maincontent" class="columns">
-    <section id="map-container" class="column">
+  <main id="maincontent" class="content">
+    <section id="map-container" class="content__left">
       <div id="map" class="map"></div>
     </section>
-    <section class="column restaurants">
+    <section class="content__right restaurants">
       <ul id="restaurants-list" class="restaurants__list"></ul>
     </section>
   </main>
@@ -39,6 +42,7 @@
 
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/view-switcher.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiXQDxeNsrICqtVZs-bjsowA5rnBnXpMU&libraries=places&callback=initMap"></script>
 </body>
 

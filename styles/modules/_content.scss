@@ -1,0 +1,27 @@
+.content {
+  position: relative;
+
+  &__left {
+    @include absolute(top 0 left 0);
+    z-index: 1;
+    width: 100%;
+
+    &--visible {
+      z-index: 3;
+    }
+
+    @include atLarge {
+      width: 50%;
+    }
+  }
+
+  &__right {
+    @include absolute(top 0 right 0);
+    z-index:2;
+    width: 100%;
+
+    @include atLarge {
+      width: 50%;
+    }
+  }
+}

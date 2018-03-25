@@ -1,0 +1,19 @@
+.view-switcher {
+  @include absolute(bottom 5% right 2%);
+
+  @include atLarge {
+    display: none;
+  }
+
+  &__btn {
+    border: 0;
+    background-color: transparent;
+    color: $white;
+    font-size: 2rem;
+    text-transform: uppercase;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
