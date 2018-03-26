@@ -7,6 +7,8 @@
   <!-- Main CSS file -->
   <!-- <link rel="stylesheet" href="css/styles.css" type="text/css"> -->
   <link rel="stylesheet" href="css/main.css" type="text/css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
   <title>Restaurant Info</title>
 </head>
 
@@ -25,9 +27,9 @@
     <nav class="header__nav">
       <h1><a class="header__nav-item" href="/">Restaurant Reviews</a></h1>
     </nav>
-    <div class="view-switcher view-switcher--is-filter">
-      <button class="view-switcher__btn" id="view-switcher-filter">
-        <i class="fas fa-filter fa-lg icon"></i>
+    <div class="view-switcher">
+      <button class="view-switcher__btn" id="view-switcher">
+        <i class="fas fa-map fa-lg icon"></i>
       </button>
     </div>
   </header>
@@ -72,6 +74,7 @@
   <script type="text/javascript" src="js/dbhelper.js"></script>
   <!-- Main javascript file -->
   <script type="text/javascript" src="js/restaurant_info.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/view-switcher.js"></script>
   <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiXQDxeNsrICqtVZs-bjsowA5rnBnXpMU&libraries=places&callback=initMap"></script>
   <!-- End scripts -->

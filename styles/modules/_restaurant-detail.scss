@@ -1,4 +1,7 @@
 .restaurant-detail {
+  padding-top: 4.6rem;
+  background-color: $c-light-grey;
+
   &__title {
     color: #f18200;
     font-family: Arial,sans-serif;
@@ -35,11 +38,94 @@
     margin: 10px 0px;
     padding: 0 5%;
   }
+
+  &__hours {
+    color: #666;
+    padding: 0 5%;
+    font-size: 12pt;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .restaurant-review {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
-  width: 50%;
+  background-color: $c-light-grey;
+  padding: 10px 5% 30px;
+
+  &__title {
+    color: #f58500;
+    font-size: 20pt;
+    font-weight: 300;
+    letter-spacing: -1px;
+    padding-bottom: 1pt;
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    width: 50%;
+    height: 50px;
+    background-color: $c-dark-main;
+    color: $white;
+    font-size: 20pt;
+    padding: 10px 0 0 20px;
+    border-top-left-radius: 15px;
+  }
+
+  &__date {
+    @include absolute(top 0 right 0);
+    width: 50%;
+    height: 50px;
+    color: $c-grey;
+    text-align: right;
+    background-color: $c-dark-main;
+    font-size: 14pt;
+    white-space: nowrap;
+    padding: 14px 50px 0;
+  }
+
+  &__rating {
+    width: 10rem;
+    padding: 7px 15px;
+    text-align: center;
+    background: $orange;
+    color: $white;
+    font-size: 11pt;
+    font-weight: bold;
+    color: $white;
+  }
+
+  &__comment {
+    font-size: 14pt;
+  }
+
+  li {
+    background-color: #fff;
+    display: block;
+    list-style-type: none;
+    margin: 0 0 30px;
+    overflow: hidden;
+    padding: 0 0 10px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    &::after {
+      display: table;
+      clear: both;
+      content: "";
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    td {
+      color: #666;
+    }
+  }
 }

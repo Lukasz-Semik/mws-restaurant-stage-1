@@ -145,15 +145,17 @@ createRestaurantHTML = (restaurant) => {
   li.append(image);
 
   const name = document.createElement('h1');
-  name.className="restaurants__title"
+  name.className='restaurants__title'
   name.innerHTML = restaurant.name;
   li.append(name);
 
   const neighborhood = document.createElement('p');
+  neighborhood.className = 'restaurants__text'
   neighborhood.innerHTML = restaurant.neighborhood;
   li.append(neighborhood);
 
   const address = document.createElement('p');
+  address.className = 'restaurants__text restaurants__text--small'
   address.innerHTML = restaurant.address;
   li.append(address);
 

@@ -7,7 +7,7 @@ html {
   font-size: 62.5%; }
 
 body {
-  background-color: #fdfdfd;
+  background-color: #f3f3f3;
   margin: 0; }
 
 a {
@@ -37,7 +37,8 @@ a {
   width: auto;
   height: calc(100vh - 9.5rem);
   overflow-x: hidden;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  background-color: #f3f3f3; }
   .restaurants__title {
     color: #f18200;
     font-family: Arial,sans-serif;
@@ -76,42 +77,114 @@ a {
     max-width: 100%;
     min-height: 248px;
     min-width: 100%; }
+  .restaurants__text {
+    color: #444;
+    margin: 0;
+    font-size: 11pt; }
+    .restaurants__text--small {
+      font-size: 10pt; }
 
-.restaurant-detail__title {
-  color: #f18200;
-  font-family: Arial,sans-serif;
-  font-size: 20pt;
-  font-weight: 200;
-  letter-spacing: 0;
-  margin: 15px 5% 15px;
-  text-transform: uppercase;
-  line-height: 1.1; }
-.restaurant-detail__img {
-  width: 90%;
-  display: block;
-  margin: 0 auto;
-  border-radius: 5rem 0 5rem 0; }
-.restaurant-detail__cuisine {
-  background-color: #333;
-  color: #ddd;
-  font-size: 12pt;
-  font-weight: 300;
-  letter-spacing: 10px;
-  margin: 20px auto 20px;
-  padding: 2px 0;
-  text-align: center;
-  text-transform: uppercase;
-  width: 90%; }
-.restaurant-detail__address {
-  font-size: 12pt;
-  margin: 10px 0px;
-  padding: 0 5%; }
+.restaurant-detail {
+  padding-top: 4.6rem;
+  background-color: #f3f3f3; }
+  .restaurant-detail__title {
+    color: #f18200;
+    font-family: Arial,sans-serif;
+    font-size: 20pt;
+    font-weight: 200;
+    letter-spacing: 0;
+    margin: 15px 5% 15px;
+    text-transform: uppercase;
+    line-height: 1.1; }
+  .restaurant-detail__img {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5rem 0 5rem 0; }
+  .restaurant-detail__cuisine {
+    background-color: #333;
+    color: #ddd;
+    font-size: 12pt;
+    font-weight: 300;
+    letter-spacing: 10px;
+    margin: 20px auto 20px;
+    padding: 2px 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 90%; }
+  .restaurant-detail__address {
+    font-size: 12pt;
+    margin: 10px 0px;
+    padding: 0 5%; }
+  .restaurant-detail__hours {
+    color: #666;
+    padding: 0 5%;
+    font-size: 12pt; }
+  .restaurant-detail__list {
+    margin: 0;
+    padding: 0; }
 
 .restaurant-review {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
-  width: 50%; }
+  background-color: #f3f3f3;
+  padding: 10px 5% 30px; }
+  .restaurant-review__title {
+    color: #f58500;
+    font-size: 20pt;
+    font-weight: 300;
+    letter-spacing: -1px;
+    padding-bottom: 1pt;
+    margin-bottom: 10px; }
+  .restaurant-review__text {
+    width: 50%;
+    height: 50px;
+    background-color: #252831;
+    color: #fff;
+    font-size: 20pt;
+    padding: 10px 0 0 20px;
+    border-top-left-radius: 15px; }
+  .restaurant-review__date {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: 50%;
+    height: 50px;
+    color: #aaa;
+    text-align: right;
+    background-color: #252831;
+    font-size: 14pt;
+    white-space: nowrap;
+    padding: 14px 50px 0; }
+  .restaurant-review__rating {
+    width: 10rem;
+    padding: 7px 15px;
+    text-align: center;
+    background: orange;
+    color: #fff;
+    font-size: 11pt;
+    font-weight: bold;
+    color: #fff; }
+  .restaurant-review__comment {
+    font-size: 14pt; }
+  .restaurant-review li {
+    background-color: #fff;
+    display: block;
+    list-style-type: none;
+    margin: 0 0 30px;
+    overflow: hidden;
+    padding: 0 0 10px;
+    width: 100%;
+    position: relative;
+    z-index: 1; }
+    .restaurant-review li::after {
+      display: table;
+      clear: both;
+      content: ""; }
+    .restaurant-review li p {
+      margin: 0 0 10px; }
+    .restaurant-review li td {
+      color: #666; }
 
 .content {
   position: relative; }
@@ -240,6 +313,10 @@ a {
     color: orange; }
 
 .breadcrumb {
+  top: 6.5rem;
+  left: 50%;
+  position: fixed;
+  z-index: 2;
   padding: 10px 40px 16px;
   list-style: none;
   background-color: #eee;
@@ -265,15 +342,18 @@ a {
   position: fixed;
   width: 100%;
   height: 3rem;
+  font-size: 8pt;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #444;
   color: #aaa;
-  font-size: 8pt;
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center; }
+  @media (min-width: 570px) {
+    .footer {
+      font-size: 10pt; } }
   .footer__link {
     color: orange;
     margin: 0 2px; }

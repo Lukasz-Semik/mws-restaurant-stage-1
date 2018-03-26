@@ -2,7 +2,8 @@
   @include sizing(auto $view-height);
   overflow-x: hidden;
   overflow-y: scroll;
-
+  background-color: $c-light-grey;
+  
   &__title {
     color: $c-orange-darken;
     font-family: Arial,sans-serif;
@@ -47,5 +48,15 @@
     max-width: 100%;
     min-height: 248px;
     min-width: 100%;
+  }
+
+  &__text {
+    color: $c-dark-grey;
+    margin: 0;
+    font-size: 11pt;
+
+    &--small {
+      font-size: 10pt;
+    }
   }
 }

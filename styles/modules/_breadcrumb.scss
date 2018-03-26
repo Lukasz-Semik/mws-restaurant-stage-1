@@ -1,4 +1,6 @@
 .breadcrumb {
+  @include fixed(left 50% top 6.5rem);
+  z-index: 2;
   padding: 10px 40px 16px;
   list-style: none;
   background-color: #eee;
