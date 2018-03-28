@@ -44,7 +44,7 @@
     @include sizing(15rem 2.5rem);
     font-size: 10pt;
     display: block;
-    margin: 5px 10px;
+    margin: 0.5rem 1rem;
 
     @include atMedium {
       display: inline-block;
@@ -53,13 +53,13 @@
     @include atLarge {
       @include sizing(20rem 3.5rem);
       font-size: 11pt;
-      margin: 0 10px;
+      margin: 0 1rem;
     }
 
     background-color: $white;
     border: 1px solid $white;
     font-family: Arial,sans-serif;
     letter-spacing: 0;
-    padding: 0 10px;
+    padding: 0 1rem;
   }
 }

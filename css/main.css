@@ -65,17 +65,17 @@ a {
     background-color: #fff;
     border: 2px solid #ccc;
     font-family: Arial,sans-serif;
-    margin: 15px;
-    min-height: 380px;
-    padding: 0 30px 25px;
+    margin: 1.5rem;
+    min-height: 18rem;
+    padding: 0 3rem 2.5rem;
     text-align: left;
-    width: 300px; }
+    width: 30rem; }
   .restaurants__img {
     background-color: #ccc;
     display: block;
     margin: 0;
     max-width: 100%;
-    min-height: 248px;
+    min-height: 24.8rem;
     min-width: 100%; }
   .restaurants__text {
     color: #444;
@@ -100,14 +100,14 @@ a {
     width: 90%;
     display: block;
     margin: 0 auto;
-    border-radius: 5rem 0 5rem 0; }
+    border-radius: 1.5rem 0 1.5rem 0; }
   .restaurant-detail__cuisine {
     background-color: #333;
     color: #ddd;
     font-size: 12pt;
     font-weight: 300;
-    letter-spacing: 10px;
-    margin: 20px auto 20px;
+    letter-spacing: 1rem;
+    margin: 2rem auto 2rem;
     padding: 2px 0;
     text-align: center;
     text-transform: uppercase;
@@ -128,14 +128,17 @@ a {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   background-color: #f3f3f3;
-  padding: 10px 5% 30px; }
+  padding: 10px 5% 3rem; }
   .restaurant-review__title {
     color: #f58500;
-    font-size: 20pt;
+    font-size: 15pt;
     font-weight: 300;
     letter-spacing: -1px;
     padding-bottom: 1pt;
     margin-bottom: 10px; }
+    @media (min-width: 570px) {
+      .restaurant-review__title {
+        font-size: 20pt; } }
   .restaurant-review__text {
     width: 50%;
     height: 50px;
@@ -155,10 +158,16 @@ a {
     background-color: #252831;
     font-size: 14pt;
     white-space: nowrap;
-    padding: 14px 50px 0; }
+    padding: 1.4rem 5rem 0;
+    font-size: 11pt; }
+    @media (min-width: 570px) {
+      .restaurant-review__date {
+        font-size: 14pt; } }
   .restaurant-review__rating {
+    left: 15px;
+    position: relative;
     width: 10rem;
-    padding: 7px 15px;
+    padding: 0.7rem 15rem;
     text-align: center;
     background: orange;
     color: #fff;
@@ -166,23 +175,25 @@ a {
     font-weight: bold;
     color: #fff; }
   .restaurant-review__comment {
-    font-size: 14pt; }
+    font-size: 14pt;
+    padding: 0 1.5rem; }
   .restaurant-review li {
     background-color: #fff;
     display: block;
     list-style-type: none;
-    margin: 0 0 30px;
+    margin: 0 0 3rem;
     overflow: hidden;
-    padding: 0 0 10px;
+    padding: 0 0 1rem;
     width: 100%;
     position: relative;
+    border-top-left-radius: 1.5rem;
     z-index: 1; }
     .restaurant-review li::after {
       display: table;
       clear: both;
       content: ""; }
     .restaurant-review li p {
-      margin: 0 0 10px; }
+      margin: 0 0 1rem; }
     .restaurant-review li td {
       color: #666; }
 
@@ -254,12 +265,12 @@ a {
     height: 2.5rem;
     font-size: 10pt;
     display: block;
-    margin: 5px 10px;
+    margin: 0.5rem 1rem;
     background-color: #fff;
     border: 1px solid #fff;
     font-family: Arial,sans-serif;
     letter-spacing: 0;
-    padding: 0 10px; }
+    padding: 0 1rem; }
     @media (min-width: 570px) {
       .filter-options__select {
         display: inline-block; } }
@@ -268,7 +279,7 @@ a {
         width: 20rem;
         height: 3.5rem;
         font-size: 11pt;
-        margin: 0 10px; } }
+        margin: 0 1rem; } }
 
 .map {
   width: 100%;
@@ -281,8 +292,8 @@ a {
   color: #fff;
   display: block;
   font-size: 10pt;
-  margin: 15px auto 0;
-  padding: 8px 30px 10px;
+  margin: 1.5rem auto 0;
+  padding: 0.8re, 3rem 1rem;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase; }
@@ -308,21 +319,26 @@ a {
 
 .icon {
   color: #fff;
-  margin: 5px 5px 5px 5px; }
+  margin: 5px; }
   .icon:hover, .icon:focus {
     color: orange; }
 
 .breadcrumb {
   top: 6.5rem;
-  left: 50%;
+  left: 0;
   position: fixed;
   z-index: 2;
-  padding: 10px 40px 16px;
+  padding: 1rem 4rem 1.6rem;
   list-style: none;
   background-color: #eee;
-  font-size: 17px;
+  font-size: 1.7rem;
   margin: 0;
   width: 100%; }
+  @media (min-width: 570px) {
+    .breadcrumb {
+      top: 6.5rem;
+      left: 50%;
+      position: fixed; } }
   .breadcrumb li {
     display: inline; }
   .breadcrumb li + li:before {
@@ -330,7 +346,7 @@ a {
     color: black;
     content: "/\00a0"; }
   .breadcrumb__link {
-    color: #0275d8;
+    color: #01447e;
     text-decoration: none; }
     .breadcrumb__link:hover {
       color: #01447e;
