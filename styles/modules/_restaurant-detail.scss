@@ -3,7 +3,7 @@
   background-color: $c-light-grey;
 
   &__title {
-    color: #f18200;
+    color: $c-orange-darken;
     font-family: Arial,sans-serif;
     font-size: 20pt;
     font-weight: 200;
@@ -98,7 +98,7 @@
   &__rating {
     @include relative(left 15px);
     width: 10rem;
-    padding: 0.7rem 15rem;
+    padding: 0.7rem 1rem;
     text-align: center;
     background: $orange;
     color: $white;

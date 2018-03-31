@@ -29,3 +29,8 @@ btnFilter.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
   filterOptions.classList.remove('filter-options--expanded');
 })
+
+window.onload = function() {
+  console.log(document.querySelectorAll('area'));
+}
+

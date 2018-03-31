@@ -10,6 +10,10 @@ var markers = []
 document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
+
+  if (!navigator.serviceWorker) return;
+  navigator.serviceWorker.register('/sw.js')
+    .then(() => console.log('registered!'));
 });
 
 /**
@@ -142,6 +146,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurants__img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = `Picture of ${restaurant.name}`
   li.append(image);
 
   const name = document.createElement('h1');
