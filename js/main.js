@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   if (!navigator.serviceWorker) return;
   navigator.serviceWorker.register('/sw.js')
-    .then(() => console.log('registered!'));
+    .then(() => ('registered!'));
 });
 
 /**
@@ -79,11 +79,17 @@ window.initMap = () => {
     lat: 40.722216,
     lng: -73.987501
   };
-  self.map = new google.maps.Map(document.getElementById('map'), {
+  const MAP = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: loc,
     scrollwheel: false
   });
+  self.map = MAP;
+  google.maps.event.addListener(MAP, "tilesloaded", function(){
+    [].slice.apply(document.querySelectorAll('#map *')).forEach(function(item) { 
+      item.setAttribute('tabindex','-1'); 
+      });
+    });
   updateRestaurants();
 }
 
@@ -146,7 +152,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurants__img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = `Picture of ${restaurant.name}`
+  image.alt = `An image from the restaurant ${restaurant.name}`
   li.append(image);
 
   const name = document.createElement('h1');
@@ -183,6 +189,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     google.maps.event.addListener(marker, 'click', () => {
       window.location.href = marker.url
     });
+
     self.markers.push(marker);
   });
 }

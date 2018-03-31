@@ -9,11 +9,17 @@ window.initMap = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      self.map = new google.maps.Map(document.getElementById('map'), {
+      const MAP = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
         center: restaurant.latlng,
         scrollwheel: false
       });
+      self.map = MAP;
+      google.maps.event.addListener(MAP, "tilesloaded", function(){
+        [].slice.apply(document.querySelectorAll('#map *')).forEach(function(item) { 
+          item.setAttribute('tabindex','-1'); 
+          });
+        });
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
@@ -146,6 +152,7 @@ createReviewHTML = (review) => {
  */
 fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
+  breadcrumb.setAttribute('role', 'menubar')
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
   breadcrumb.appendChild(li);

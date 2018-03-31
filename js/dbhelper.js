@@ -151,7 +151,6 @@ class DBHelper {
    */
   static imageUrlForRestaurant(restaurant, bigPicture) {
     //1-236_small_1x
-
     const number = restaurant.photograph.charAt(0);
     if (bigPicture && window.innerWidth > 570) {
       return (`/img/${number}-650_large_1x.jpg`);
@@ -175,6 +174,7 @@ class DBHelper {
       map: map,
       animation: google.maps.Animation.DROP}
     );
+    (marker);
     return marker;
   }
 
