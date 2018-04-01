@@ -18,10 +18,6 @@ self.addEventListener('install', function(event) {
           '/js/main.js',
           '/js/restaurant_info.js',
           '/js/view-switcher.js',
-          'https://normalize-css.googlecode.com/svn/trunk/normalize.css',
-          'https://use.fontawesome.com/releases/v5.0.8/js/solid.js',
-          'https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js',
-          'https://maps.googleapis.com/maps/api/js?key=AIzaSyDiXQDxeNsrICqtVZs-bjsowA5rnBnXpMU&libraries=places&callback=initMap',
         ]);
       })
   )

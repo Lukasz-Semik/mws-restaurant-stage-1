@@ -18,26 +18,30 @@
       <h1><a class="header__nav-item" href="/">Restaurant Reviews</a></h1>
     </nav>
     <div class="view-switcher view-switcher--is-filter">
-      <button class="view-switcher__btn" id="view-switcher-filter">
+      <button class="view-switcher__btn" id="view-switcher-filter" aria-labelledby="filter-label">
         <i class="fas fa-filter fa-lg icon"></i>
       </button>
+      <span id="filter-label" class="g-label">Open or close filters</span>
     </div>
     <div class="filter-options" id="filter-options">
       <h2 class="filter-options__title">Filter Results</h2>
-      <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" class="filter-options__select">
+      <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" class="filter-options__select" aria-labelledby="filter-neighborhoods-label">
         <option value="all">All Neighborhoods</option>
       </select>
-      <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" class="filter-options__select">
+      <span id="filter-neighborhoods-label" class="g-label">Filter by neighborhoods</span>
+      <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" class="filter-options__select" aria-labelledby="filter-cuisines-label">
         <option value="all">All Cuisines</option>
       </select>
+      <span id="filter-cuisines-label" class="g-label">Filter by neighborhoods</span>
       <button class="filter-options__close" id="filter-close">
         <i class="fas fa-times fa-2x icon"></i>
       </button>
     </div>
     <div class="view-switcher">
-      <button class="view-switcher__btn" id="view-switcher">
+      <button class="view-switcher__btn" id="view-switcher" aria-labelledby="view-switcher-label">
         <i class="fas fa-map fa-lg icon"></i>
       </button>
+      <span id="view-switcher-label" class="g-label">Toggle between map and tabular view</span>
     </div>
   </header>
 

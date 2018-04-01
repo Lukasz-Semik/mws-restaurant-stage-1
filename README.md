@@ -2,6 +2,16 @@
 ---
 #### _Three Stage Course Material Project - Restaurant Reviews_
 
+## Student Dev notes:
+To run the project:
+`yarn dev` or `npm run dev`
+
+To run sass:
+`yarn scss:watch` or `npm run scss:watch`
+
+To create different versions (sizes) of imgs:
+`grunt responsive_images`
+
 ## Project Overview: Stage 1
 
 For the **Restaurant Reviews** projects, you will incrementally convert a static webpage to a mobile-ready web application. In **Stage One**, you will take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. You will also add a service worker to begin the process of creating a seamless offline experience for your users.

@@ -5,9 +5,15 @@
     @include absolute(top 0 left 0);
     z-index: 1;
     width: 100%;
+    visibility: hidden;
+
+    @include atLarge {
+      visibility: visible;
+    }
 
     &--visible {
       z-index: 3;
+      visibility: visible;
     }
 
     @include atLarge {

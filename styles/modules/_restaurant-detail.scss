@@ -90,7 +90,7 @@
     white-space: nowrap;
     padding: 1.4rem 5rem 0;
     font-size: 11pt;
-    @include atMedium {
+    @include atLarge {
       font-size: 14pt;
     }
   }

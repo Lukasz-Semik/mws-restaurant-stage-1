@@ -8,6 +8,10 @@
   &--is-filter {
     right: auto;
     left: 2%;
+
+    @include atMedium {
+      display: none;
+    }
   }
 
   &__btn {
