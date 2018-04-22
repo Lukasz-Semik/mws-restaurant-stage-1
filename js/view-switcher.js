@@ -29,3 +29,7 @@ btnFilter.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
   filterOptions.classList.remove('filter-options--expanded');
 })
+
+console.log('sdadsad')
+
+

@@ -39,7 +39,9 @@ fetchRestaurantFromURL = (callback) => {
     error = 'No restaurant id in URL'
     callback(error, null);
   } else {
-    DBHelper.fetchRestaurantById(id, (error, restaurant) => {
+    fetch(`http://localhost:1337/restaurants/${id}`)
+    .then(response => response.json())
+    .then(restaurant => {
       self.restaurant = restaurant;
       if (!restaurant) {
         console.error(error);
@@ -63,7 +65,6 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.src = DBHelper.imageUrlForRestaurant(restaurant, true);
-  console.log(restaurant);
   image.alt = `An image from the restaurant ${restaurant.name}`
 
   const cuisine = document.getElementById('restaurant-cuisine');

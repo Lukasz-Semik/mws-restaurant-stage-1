@@ -11,23 +11,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
 
-  if (!navigator.serviceWorker) return;
-  navigator.serviceWorker.register('/sw.js')
-    .then(() => ('registered!'));
+  // if (!navigator.serviceWorker) return;
+  // navigator.serviceWorker.register('/sw.js')
+  //   .then(() => ('registered!'));
 });
 
 /**
  * Fetch all neighborhoods and set their HTML.
  */
 fetchNeighborhoods = () => {
-  DBHelper.fetchNeighborhoods((error, neighborhoods) => {
-    if (error) { // Got an error
-      console.error(error);
-    } else {
-      self.neighborhoods = neighborhoods;
-      fillNeighborhoodsHTML();
-    }
-  });
+  fetch('http://localhost:1337/restaurants')
+  .then(resoponse => response.json())
+  .then((data) => {
+    console.log(data);
+    self.neighborhoods = data
+      .map((v, i) => data[i].neighborhood)
+      .filter((v, i, self) => self.indexOf(v) == i);
+    fillNeighborhoodsHTML();
+  })
+  .catch(() => console.log('something went wrong'));
 }
 
 /**
@@ -47,14 +49,17 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
  * Fetch all cuisines and set their HTML.
  */
 fetchCuisines = () => {
-  DBHelper.fetchCuisines((error, cuisines) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      self.cuisines = cuisines;
-      fillCuisinesHTML();
-    }
-  });
+  fetch('http://localhost:1337/restaurants')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    const cuisines = data.map((v, i) => data[i].cuisine_type)
+    const uniqueCuisines = cuisines.filter((v, i) => cuisines.indexOf(v) == i)
+    self.cuisines = cuisines;
+    fillCuisinesHTML();
+  })
+  .catch(() => console.log('something went wrong'))
 }
 
 /**
@@ -106,13 +111,18 @@ updateRestaurants = () => {
   const cuisine = cSelect[cIndex].value;
   const neighborhood = nSelect[nIndex].value;
 
-  DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      resetRestaurants(restaurants);
+  fetch('http://localhost:1337/restaurants')
+  .then(response => response.json())
+  .then(restaurants => {
+    let results = restaurants;
+      if (cuisine != 'all') { // filter by cuisine
+        results = restaurants.filter(r => r.cuisine_type == cuisine);
+      }
+      if (neighborhood != 'all') { // filter by neighborhood
+        results = restaurants.filter(r => r.neighborhood == neighborhood);
+      }
+      resetRestaurants(results);
       fillRestaurantsHTML();
-    }
   })
 }
 
@@ -193,3 +203,4 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 }
+
