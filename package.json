@@ -5,7 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "lite-server",
-    "scss:watch": "sass --watch styles/index.scss:css/main.css --style compressed"
+    "scss:watch": "sass --watch styles/index.scss:css/main.css --style compressed",
+    "minify:main": "minify js/main.js --out-file scripts/main.js --mangle.keepClassName",
+    "minify:restaurant_info": "minify js/restaurant_info.js --out-file scripts/restaurant_info.js --mangle.keepClassName",
+    "minify:utils": "minify js/utils.js --out-file scripts/utils.js --mangle.keepClassName",
+    "minify": "yarn minify:main && yarn minify:restaurant_info && yarn minify:utils"
   },
   "dependencies": {
     "grunt-responsive-images": "^0.1.6",
@@ -13,6 +17,7 @@
     "lite-server": "^2.3.0"
   },
   "devDependencies": {
+    "babel-minify": "^0.4.1",
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-nodeunit": "~0.4.1",
