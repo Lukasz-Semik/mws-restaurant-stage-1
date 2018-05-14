@@ -8,8 +8,9 @@
     "scss:watch": "sass --watch styles/index.scss:css/main.css --style compressed"
   },
   "dependencies": {
-    "lite-server": "^2.3.0",
-    "grunt-responsive-images": "^0.1.6"
+    "grunt-responsive-images": "^0.1.6",
+    "idb": "^2.1.1",
+    "lite-server": "^2.3.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

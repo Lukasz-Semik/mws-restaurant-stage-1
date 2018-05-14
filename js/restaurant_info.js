@@ -1,6 +1,11 @@
 let restaurant;
 var map;
 
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('/sw.js')
+  .then(() => ('registered!'));
+};
+
 /**
  * Initialize Google map, called from HTML.
  */
@@ -39,17 +44,35 @@ fetchRestaurantFromURL = (callback) => {
     error = 'No restaurant id in URL'
     callback(error, null);
   } else {
-    fetch(`http://localhost:1337/restaurants/${id}`)
-    .then(response => response.json())
-    .then(restaurant => {
-      self.restaurant = restaurant;
-      if (!restaurant) {
-        console.error(error);
-        return;
-      }
-      fillRestaurantHTML();
-      callback(null, restaurant)
-    });
+    dbPromise.then(function(db) {
+      var tx = db.transaction('restaurants');
+      var restaurantsStore = tx.objectStore('restaurants');
+        return restaurantsStore.get(`restaurant-${id}`);
+      }).then((restaurant) => {
+        if (restaurant) {
+          self.restaurant = restaurant;
+          fillRestaurantHTML();
+          callback(null, restaurant)
+        } else {
+          fetch(`http://localhost:1337/restaurants/${id}`)
+            .then(response => response.json())
+            .then(restaurant => {
+              dbPromise.then(db => {
+                const tx = db.transaction('restaurants', 'readwrite');
+                const restaurantsStore = tx.objectStore('restaurants');
+                restaurantsStore.put(restaurant, `restaurant-${id}`)
+                self.restaurant = restaurant;
+                if (!restaurant) {
+                  console.error(error);
+                  return;
+                }
+                fillRestaurantHTML();
+                callback(null, restaurant)
+                return tx.complete;
+              });
+            });
+        }
+      })
   }
 }
 

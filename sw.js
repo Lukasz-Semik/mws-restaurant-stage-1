@@ -1,4 +1,4 @@
-self.addEventListener('activate', function(event) { //
+self.addEventListener('activate', function(event) {
   console.log('[Service Worker] Activating Service Worker ...', event);
   return self.clients.claim();
 });
@@ -13,11 +13,9 @@ self.addEventListener('install', function(event) {
           '/',
           '/index.html',
           '/restaurant.html',
-          '/css/main.css',
-          '/js/dbhelper.js',
           '/js/main.js',
           '/js/restaurant_info.js',
-          '/js/view-switcher.js',
+          '/js/utils.js',
         ]);
       })
   )
