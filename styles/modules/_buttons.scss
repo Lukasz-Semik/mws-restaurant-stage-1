@@ -9,4 +9,31 @@
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-like {
+  position: absolute;
+  cursor: pointer;
+  top: 55px;
+  right: 5%;
+  color: $c-grey;
+  border: none;
+  background-color: transparent;
+  outline: none;
+
+  .icon {
+    color: $c-grey;
+  }
+
+  &--is-favourite {
+    .icon {
+      color: $c-red;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $orange;
+  }
 }

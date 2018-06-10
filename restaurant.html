@@ -54,20 +54,63 @@
     <!-- Beginning restaurant -->
     <div class="content__right restaurants">
       <section id="restaurant-container" class="restaurant-detail">
+        <button class="btn-like" id="btn-like">
+          <i class="fas fa-heart fa-3x icon"></i>
+        </button>
         <ul id="breadcrumb" class="breadcrumb">
           <li><a class="breadcrumb__link" href="/">Home</a></li>
         </ul>
-        <h2 id="restaurant-name" class="restaurant-detail__title"></h2>
-        <img id="restaurant-img" class="restaurant-detail__img">
-        <p id="restaurant-cuisine" class="restaurant-detail__cuisine"></p>
-        <p id="restaurant-address" class="restaurant-detail__address"></p>
-        <table id="restaurant-hours"></table>
+        <div id="details-container">
+          <h2 id="restaurant-name" class="restaurant-detail__title"></h2>
+          <img id="restaurant-img" class="restaurant-detail__img">
+          <p id="restaurant-cuisine" class="restaurant-detail__cuisine"></p>
+          <p id="restaurant-address" class="restaurant-detail__address"></p>
+          <table id="restaurant-hours"></table>
+        </div>
       </section>
       <!-- end restaurant -->
+      <!-- Add review -->
+      <div class="form__container">
+        <h2 class="form__title">Add your review</h2>
+        <form class="form" name="comment-form" id="form">
+          <div  class="form__field form__field--name">
+            <label>
+              <span class="form__label">Your Name</span>
+              <input name="userName" class="form__input" id="userName"/>
+            </label>
+            <span class="error-msg" id="error-name">Has to be longer than 3</span>
+          </div>
+          <div  class="form__field">
+            <label class="form__label form__label--rating">
+              <span class="form__label">Your Rating</span>
+              <select name="rating" class="form__input" id="rating">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2" >2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+            <span class="error-msg" id="error-rating">Required</span>
+          </div>
+          <div  class="form__field">
+            <label>
+              <span class="form__label">Your Comment</span>
+              <textarea name="comment" class="form__input" id="comment"></textarea>
+            </label>
+            <span class="error-msg" id="error-comment">Has to be longer than 3</span>
+          </div>
+          <span class="error-msg error-msg--centered" id="error-form">Form is invalid</span>
+          <button class="btn" id="form-button">Submit</button>
+        </form>
+      </div>
       <!-- Beginning reviews -->
       <section id="reviews-container" class="restaurant-review">
+        <h2 class="restaurant-review__title">Reviews</h2>
         <ul id="reviews-list"></ul>
       </section>
+      <button class="btn" id="add-new-review">Add another review</button>
     </div>
     <!-- End reviews -->
   </main>
@@ -81,9 +124,9 @@
 
   <!-- Beginning scripts -->
   <!-- Database helpers -->
-  <script type="text/javascript" src="scripts/utils.js"></script>
+  <script type="text/javascript" src="js/utils.js"></script>
   <!-- Main javascript file -->
-  <script type="text/javascript" src="scripts/restaurant_info.js"></script>
+  <script type="text/javascript" src="js/restaurant_info.js"></script>
   <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiXQDxeNsrICqtVZs-bjsowA5rnBnXpMU&libraries=places&callback=initMap"></script>
   <!-- End scripts -->

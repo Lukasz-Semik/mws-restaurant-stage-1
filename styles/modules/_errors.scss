@@ -1,0 +1,13 @@
+.error-msg {
+  margin-top: 5px;
+  color: $c-red;
+  display: none;
+
+  &--is-visible {
+    display: block;
+  }
+
+  &--centered {
+    text-align: center;
+  }
+}

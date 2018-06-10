@@ -17,6 +17,11 @@ a {
   text-decoration: none;
 }
 
+select {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
 .g-label {
   position: absolute;
   opacity: 0;
