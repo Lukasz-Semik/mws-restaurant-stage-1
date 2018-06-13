@@ -91,7 +91,7 @@ const saveRestaurantInIndexedDb = (restaurant, id, callback) => dbPromise
     };
     return tx.complete;
   });
-// TODO something wrong db indexed db
+
 const setButtonLikeClass = restaurant => {
   const favClass = 'btn-like--is-favourite';
   console.log('btn', Boolean(restaurant.is_favorite));
@@ -103,7 +103,7 @@ const setButtonLikeClass = restaurant => {
     buttonLike.classList.remove('btn-like--is-favourite');
   }
 }
-// TODO!! something wrong db indexed db
+
 buttonLike.addEventListener('click', () => {
   const fav = self.restaurant.is_favorite;
 
@@ -199,7 +199,7 @@ createReviewHTML = (review) => {
 
   const date = document.createElement('p');
   date.className = 'restaurant-review__date'
-
+  console.log(review);
   let time = new Date(review.updatedAt || review.createdAt);
 
   const parsedTime = `${time.getFullYear()}-${prefixZero(time.getMonth() + 1)}-${prefixZero(time.getDate())}`;
@@ -260,9 +260,34 @@ const INPUTS = [
   { name: 'commentInput', el: commentInput, error: 'comment' },
 ];
 
-const createComment = values => {
+const createComment = review => {
+  console.log('create comment', review);
+  const restaurant = self.restaurant;
+
+  restaurant.reviews.push({
+    ...review,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+  });
+
+  saveRestaurantInIndexedDb(restaurant, getParameterByName('id'))
+    .then(() => {
+      const reviewsList = document.getElementById('reviews-list');
+      reviewsList.appendChild(createReviewHTML({
+        ...review,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      }));
+      reviewsList.lastChild.scrollIntoView({
+        behavior: 'smooth',
+      });
+      form.userName.value = '';
+      form.rating.value = '';
+      form.comment.value = '';
+    });
+
   return fetch('http://localhost:1337/reviews/', {
-    body: JSON.stringify(values),
+    body: JSON.stringify(review),
     method: 'POST',
     mode: 'cors',
   });
@@ -339,25 +364,25 @@ formButton.addEventListener('click', event => {
     return;
   }
 
-  createComment(formState)
-    .then(res => res.json())
-    .then(review => {
-      const restaurant = self.restaurant;
+  createComment(formState);
+    // .then(res => res.json())
+    // .then(review => {
+    //   const restaurant = self.restaurant;
+    //   console.log('invoked', review);
+    //   restaurant.reviews.push(review);
 
-      restaurant.reviews.push(review);
-
-      return saveRestaurantInIndexedDb(restaurant, id)
-        .then(() => {
-          const reviewsList = document.getElementById('reviews-list');
-          reviewsList.appendChild(createReviewHTML(review));
-          reviewsList.lastChild.scrollIntoView({
-            behavior: 'smooth',
-          });
-          form.userName.value = '';
-          form.rating.value = '';
-          form.comment.value = '';
-        });
-    });
+    //   return saveRestaurantInIndexedDb(restaurant, id)
+    //     .then(() => {
+    //       const reviewsList = document.getElementById('reviews-list');
+    //       reviewsList.appendChild(createReviewHTML(review));
+    //       reviewsList.lastChild.scrollIntoView({
+    //         behavior: 'smooth',
+    //       });
+    //       form.userName.value = '';
+    //       form.rating.value = '';
+    //       form.comment.value = '';
+    //     });
+    // });
 });
 
 document.getElementById('add-new-review').addEventListener('click', () => {
