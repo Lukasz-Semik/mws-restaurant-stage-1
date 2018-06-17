@@ -2,10 +2,9 @@ let restaurant;
 var map;
 const buttonLike = document.getElementById('btn-like');
 
-// if (navigator.serviceWorker) {
-//   navigator.serviceWorker.register('/sw.js')
-//   .then(() => ('registered!'));
-// };
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('/sw.js');
+};
 
 /**
  * Initialize Google map, called from HTML.
@@ -73,7 +72,7 @@ fetchRestaurantFromURL = (callback) => {
       })
   }
 }
-
+// !!!!USE IT
 const saveRestaurantInIndexedDb = (restaurant, id, callback) => dbPromise
   .then(db => {
     const tx = db.transaction('restaurants', 'readwrite');
@@ -93,13 +92,9 @@ const saveRestaurantInIndexedDb = (restaurant, id, callback) => dbPromise
   });
 
 const setButtonLikeClass = restaurant => {
-  const favClass = 'btn-like--is-favourite';
-  console.log('btn', Boolean(restaurant.is_favorite));
   if (restaurant.is_favorite === "true" || restaurant.is_favorite === true) { // there is some issue on backend -> it save the new value as a string, not as a bool.
-    console.log('is true')
     buttonLike.classList.add('btn-like--is-favourite')
   } else {
-    console.log('is-false')
     buttonLike.classList.remove('btn-like--is-favourite');
   }
 }
@@ -123,7 +118,6 @@ buttonLike.addEventListener('click', () => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   setButtonLikeClass(restaurant);
-  console.log(restaurant);
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
 
@@ -199,7 +193,6 @@ createReviewHTML = (review) => {
 
   const date = document.createElement('p');
   date.className = 'restaurant-review__date'
-  console.log(review);
   let time = new Date(review.updatedAt || review.createdAt);
 
   const parsedTime = `${time.getFullYear()}-${prefixZero(time.getMonth() + 1)}-${prefixZero(time.getDate())}`;
@@ -261,7 +254,6 @@ const INPUTS = [
 ];
 
 const createComment = review => {
-  console.log('create comment', review);
   const restaurant = self.restaurant;
 
   restaurant.reviews.push({
@@ -286,11 +278,45 @@ const createComment = review => {
       form.comment.value = '';
     });
 
-  return fetch('http://localhost:1337/reviews/', {
-    body: JSON.stringify(review),
-    method: 'POST',
-    mode: 'cors',
-  });
+    // if ('serviceWorker' in navigator && 'SyncManager' in window) {
+    //   navigator.serviceWorker.ready
+    //     .then(function(sw) {
+    //       var post = {
+    //         id: new Date().toISOString(),
+    //         title: titleInput.value,
+    //         location: locationInput.value
+    //       };
+    //       writeData('sync-posts', post)
+    //         .then(function() {
+    //           return sw.sync.register('sync-new-posts');
+    //         })
+    //         .then(function() {
+    //           var snackbarContainer = document.querySelector('#confirmation-toast');
+    //           var data = {message: 'Your Post was saved for syncing!'};
+    //           snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    //         })
+  if ('serviceWorker' in navigator && 'SyncManager' in window) {
+    navigator.serviceWorker.ready
+      .then(sw => {
+        dbPromise
+          .then(db => {
+            const tx = db.transaction('sync-reviews', 'readwrite');
+            const restaurantsStore = tx.objectStore('sync-reviews');
+            restaurantsStore.put({
+              ...review,
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            }, `sync-review`);
+            return tx.complete;
+          })
+            .then(() => {
+             if (!navigator.isOnline) {
+               document.getElementById('offline-error').classList.add('error-msg--is-visible');
+             }
+              sw.sync.register('sync-new-reviews');
+            });
+      });
+  }
 }
 
 const showError = inputName => {
@@ -310,7 +336,6 @@ const validateInput = (value, inputName) => {
 }
 
 const validateRating = rating => {
-  console.log('validate rating', rating);
   if (!rating) {
     showError('rating');
     return true;
@@ -365,24 +390,6 @@ formButton.addEventListener('click', event => {
   }
 
   createComment(formState);
-    // .then(res => res.json())
-    // .then(review => {
-    //   const restaurant = self.restaurant;
-    //   console.log('invoked', review);
-    //   restaurant.reviews.push(review);
-
-    //   return saveRestaurantInIndexedDb(restaurant, id)
-    //     .then(() => {
-    //       const reviewsList = document.getElementById('reviews-list');
-    //       reviewsList.appendChild(createReviewHTML(review));
-    //       reviewsList.lastChild.scrollIntoView({
-    //         behavior: 'smooth',
-    //       });
-    //       form.userName.value = '';
-    //       form.rating.value = '';
-    //       form.comment.value = '';
-    //     });
-    // });
 });
 
 document.getElementById('add-new-review').addEventListener('click', () => {

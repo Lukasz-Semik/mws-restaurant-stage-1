@@ -1,9 +1,12 @@
-const dbPromise = idb.open('restaurants-db', 1, (upgradeDb) => {
+const dbPromise = idb.open('restaurants-db', 2, (upgradeDb) => {
   switch(upgradeDb.oldVersion) {
     case 0:
       const keyValStore = upgradeDb.createObjectStore('restaurants');
+    case 1:
+      const keyValStoreNext = upgradeDb.createObjectStore('sync-reviews');
   }
 });
+
 
 fetchAllAndPrepareForDisplay = callback => {
   dbPromise.then(function(db) {

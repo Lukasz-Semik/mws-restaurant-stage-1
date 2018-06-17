@@ -1,4 +1,8 @@
-self.addEventListener('activate', function(event) {//
+importScripts('/js/idb.js');
+
+const dbPromise = idb.open('restaurants-db', 2);
+
+self.addEventListener('activate', function(event) {
   console.log('[Service Worker] Activating Service Worker ...', event);
   return self.clients.claim();
 });
@@ -13,9 +17,10 @@ self.addEventListener('install', function(event) {
           '/',
           '/index.html',
           '/restaurant.html',
-          '/scripts/main.js',
-          '/scripts/restaurant_info.js',
-          '/scripts/utils.js',
+          '/js/main.js',
+          '/js/restaurant_info.js',
+          '/js/utils.js',
+          '/js/idb.js',
         ]);
       })
   )
@@ -33,3 +38,25 @@ self.addEventListener('fetch', function(event) {
       })
   );
 });
+
+const readIdbData = (storeName, keyName) => dbPromise.then(function(db) {
+  var tx = db.transaction(storeName);
+  var restaurantsStore = tx.objectStore(storeName);
+    return restaurantsStore.get(keyName);
+  });
+
+self.addEventListener('sync', function(event) {
+  if (event.tag === 'sync-new-reviews') {
+    event.waitUntil(readIdbData('sync-reviews', 'sync-review')
+      .then(review => {
+        return fetch('http://localhost:1337/reviews/', {
+          body: JSON.stringify(review),
+          method: 'POST',
+          mode: 'cors',
+        }).then(data => console.log('fetvhed'))
+        .catch(err => console.log(err));
+      })
+    );
+  }
+});
+//

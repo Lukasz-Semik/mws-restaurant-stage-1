@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
 
-  // if (!navigator.serviceWorker) return;
-  // navigator.serviceWorker.register('/sw.js')
-  //   .then(() => ('registered!'));
+  if (!navigator.serviceWorker) return;
+  navigator.serviceWorker.register('/sw.js')
+    .then(() => ('registered!'));
 });
 
 /**

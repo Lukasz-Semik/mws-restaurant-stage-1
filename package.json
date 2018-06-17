@@ -9,7 +9,8 @@
     "minify:main": "minify js/main.js --out-file scripts/main.js --mangle.keepClassName",
     "minify:restaurant_info": "minify js/restaurant_info.js --out-file scripts/restaurant_info.js --mangle.keepClassName",
     "minify:utils": "minify js/utils.js --out-file scripts/utils.js --mangle.keepClassName",
-    "minify": "yarn minify:main && yarn minify:restaurant_info && yarn minify:utils"
+    "minify:idb": "minify js/idb.js --out-file scripts/idb.js --mangle.keepClassName",
+    "minify": "yarn minify:main && yarn minify:restaurant_info && yarn minify:utils && yarn minify:idb"
   },
   "dependencies": {
     "grunt-responsive-images": "^0.1.6",

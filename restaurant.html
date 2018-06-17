@@ -101,7 +101,7 @@
             </label>
             <span class="error-msg" id="error-comment">Has to be longer than 3</span>
           </div>
-          <span class="error-msg error-msg--centered" id="error-form">Form is invalid</span>
+          <span class="error-msg error-msg--is-centered" id="error-form">Form is invalid</span>
           <button class="btn" id="form-button">Submit</button>
         </form>
       </div>
@@ -110,6 +110,9 @@
         <h2 class="restaurant-review__title">Reviews</h2>
         <ul id="reviews-list"></ul>
       </section>
+      <p id="offline-error" class="error-msg error-msg--is-centered error-msg--is-big">
+        You are offline, but review has been saved.
+      </p>
       <button class="btn" id="add-new-review">Add another review</button>
     </div>
     <!-- End reviews -->
@@ -122,14 +125,10 @@
   </footer>
   <!-- End footer -->
 
-  <!-- Beginning scripts -->
-  <!-- Database helpers -->
+  <script type="application/javascript" charset="utf-8" src="js/idb.js"></script>
   <script type="text/javascript" src="js/utils.js"></script>
-  <!-- Main javascript file -->
   <script type="text/javascript" src="js/restaurant_info.js"></script>
-  <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiXQDxeNsrICqtVZs-bjsowA5rnBnXpMU&libraries=places&callback=initMap"></script>
-  <!-- End scripts -->
 
 </body>
 
