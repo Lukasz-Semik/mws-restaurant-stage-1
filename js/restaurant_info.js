@@ -256,20 +256,14 @@ const INPUTS = [
 const createComment = review => {
   const restaurant = self.restaurant;
 
-  restaurant.reviews.push({
-    ...review,
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
-  });
+  review.createdAt = Date.now();
+  review.updatedAt = Date.now();
+  restaurant.reviews.push(review);
 
   saveRestaurantInIndexedDb(restaurant, getParameterByName('id'))
     .then(() => {
       const reviewsList = document.getElementById('reviews-list');
-      reviewsList.appendChild(createReviewHTML({
-        ...review,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-      }));
+      reviewsList.appendChild(createReviewHTML(review));
       reviewsList.lastChild.scrollIntoView({
         behavior: 'smooth',
       });
@@ -278,23 +272,6 @@ const createComment = review => {
       form.comment.value = '';
     });
 
-    // if ('serviceWorker' in navigator && 'SyncManager' in window) {
-    //   navigator.serviceWorker.ready
-    //     .then(function(sw) {
-    //       var post = {
-    //         id: new Date().toISOString(),
-    //         title: titleInput.value,
-    //         location: locationInput.value
-    //       };
-    //       writeData('sync-posts', post)
-    //         .then(function() {
-    //           return sw.sync.register('sync-new-posts');
-    //         })
-    //         .then(function() {
-    //           var snackbarContainer = document.querySelector('#confirmation-toast');
-    //           var data = {message: 'Your Post was saved for syncing!'};
-    //           snackbarContainer.MaterialSnackbar.showSnackbar(data);
-    //         })
   if ('serviceWorker' in navigator && 'SyncManager' in window) {
     navigator.serviceWorker.ready
       .then(sw => {
@@ -302,11 +279,7 @@ const createComment = review => {
           .then(db => {
             const tx = db.transaction('sync-reviews', 'readwrite');
             const restaurantsStore = tx.objectStore('sync-reviews');
-            restaurantsStore.put({
-              ...review,
-              createdAt: Date.now(),
-              updatedAt: Date.now(),
-            }, `sync-review`);
+            restaurantsStore.put(review, `sync-review`);
             return tx.complete;
           })
             .then(() => {
