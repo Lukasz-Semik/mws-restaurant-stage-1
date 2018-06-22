@@ -17,10 +17,10 @@ self.addEventListener('install', function(event) {
           '/',
           '/index.html',
           '/restaurant.html',
-          '/js/main.js',
-          '/js/restaurant_info.js',
-          '/js/utils.js',
-          '/js/idb.js',
+          '/scripts/main.js',
+          '/scripts/restaurant_info.js',
+          '/scripts/utils.js',
+          '/scripts/idb.js',
         ]);
       })
   )
