@@ -370,3 +370,7 @@ document.getElementById('add-new-review').addEventListener('click', () => {
     behavior: 'smooth',
   });
 });
+
+window.addEventListener('online', () => {
+  document.getElementById('offline-error').classList.remove('error-msg--is-visible');
+});

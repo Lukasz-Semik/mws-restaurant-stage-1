@@ -26,6 +26,11 @@
     color: $c-grey;
   }
 
+  span {
+    position: absolute;
+    color: transparent;
+  }
+
   &--is-favourite {
     .icon {
       color: $c-red;

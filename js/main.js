@@ -49,7 +49,7 @@ fetchCuisines = () => {
   fetchAllAndPrepareForDisplay(data => {
     const cuisines = data.map((v, i) => data[i].cuisine_type)
     const uniqueCuisines = cuisines.filter((v, i) => cuisines.indexOf(v) == i)
-    self.cuisines = cuisines;
+    self.cuisines = uniqueCuisines;
     fillCuisinesHTML();
   });
 }
